@@ -6,15 +6,19 @@ import json
 iTunes_base_url = "https://itunes.apple.com/search"
 
 #GET REQUESTS using requests package.
-r_get=requests.get(iTunes_base_url,params={"term":"the beatles" ,"limit":"200"})
+r_get = requests.get(iTunes_base_url,
+                     params={
+                         "term": "the beatles",
+                         "limit": "200"
+                     })
+
 
 #Converting the response to JSON Object.
-returned_data=r_get.json()
+returned_data = r_get.json()
 
 #Using a loop to access only the necessary fields.
 for trackName in returned_data["results"]:
     print(f'{trackName["trackName"]}\t{trackName["releaseDate"]}')
-
 '''
 More Stuff
 print(returned_data.keys())
